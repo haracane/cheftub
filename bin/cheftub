@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require "cheftub"
+
+command = ARGV[0]
+
+exit_code = 0
+
+case command
+when "recipe"
+  ARGV.shift
+  exit_code = Cheftub::Command::Recipe.run(ARGV) || 0
+when "template"
+  ARGV.shift
+  exit_code = Cheftub::Command::Template.run(ARGV) || 0
+else
+  STDERR.puts "Invalid command: '#{command}'"
+end
+
+exit exit_code

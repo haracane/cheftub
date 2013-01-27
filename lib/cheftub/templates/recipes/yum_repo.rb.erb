@@ -1,0 +1,16 @@
+<%-
+  @repository ||= "<repository>.repo"
+%>
+[
+  "etc/yum.repos.d/<%=@repository%>"
+  ].each do |srcpath|
+  destpath = "/#{srcpath}"
+  template destpath do
+    source "#{srcpath}.erb"
+  end
+  file filepath do
+    owner "root"
+    group "root"
+    mode  "0644"
+  end
+end

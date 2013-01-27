@@ -1,0 +1,8 @@
+<%
+  package = params[:package] || "<package>"
+%>
+execute "install <%=package%>" do
+  user "root"
+  command "<install-command>"
+  creates "<installed-package>"
+end

@@ -1,0 +1,12 @@
+<%-
+  @package = params[:package] || "<package>"
+  @repository = params[:repository] || "<repository>"
+%>
+package "<%=@package%>" do
+  action :install
+end
+
+# execute "yum install <%=@package%>" do
+#   user "root"
+#   command "yum --enablerepo=<%=@repository%> -y install <%=@package%>"
+# end
